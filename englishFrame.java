@@ -6,10 +6,11 @@ import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-
+//This class produces the game by getting a word in english for the player to guess
+//Also handles the guessing and displaying of guessed words and what letters are correct, incorrect, and misplaced
 public class englishFrame extends javax.swing.JFrame {
 
-
+    //Constructor which creates the components for the JFrame 
     public englishFrame() {
         initComponents();
     }
@@ -30,6 +31,8 @@ public class englishFrame extends javax.swing.JFrame {
     private static boolean canGetWord = true;
     private static boolean hasWon = false;
 
+    //Creates the JFrame displaying the alphabet, guesses, and textbox for the user to type their guess
+    //Also allows the player to press on the letters typing the letter in the textbox
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
@@ -481,6 +484,10 @@ public class englishFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>
 
+    // Handles what occurs when the guess button is pressed
+    // it will check to see if it is a valied word
+    // the method decrements the amount of guesses left and checks to see if the guess is correct and if not 
+    // it will show the status of each character in the word
     private void guessBActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         ImageIcon emoji = new ImageIcon(getClass().getResource("IMG_9708.png"));
@@ -592,6 +599,7 @@ public class englishFrame extends javax.swing.JFrame {
         typeGuess = "";
     }
 
+    // This method resets the game choosing a new word to guess 
     private void newBActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         guesLeft = 6;
@@ -643,6 +651,7 @@ public class englishFrame extends javax.swing.JFrame {
         }
     }
 
+    // This brings the player back to the language selection screen and resets the game
     private void langBActionPerformed(java.awt.event.ActionEvent evt){
         guesLeft = 6;
         wordsLeft--;
@@ -653,7 +662,9 @@ public class englishFrame extends javax.swing.JFrame {
         mainScreen o = new mainScreen();
         o.setVisible(true);
     }
-
+    
+    // Main method to run from the method itself 
+    // *not needed*
     public static void main(String args[]) {
 
 
@@ -665,11 +676,13 @@ public class englishFrame extends javax.swing.JFrame {
         });
     }
 
+    // Close methods shuts down the JFrame
     public void close(){
         WindowEvent winClosingEvent = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
     }
 
+    //
     public static boolean getATrue(){
         for(int i = 0; i < verList.length; i++){
             if(verList[i]){
@@ -679,6 +692,8 @@ public class englishFrame extends javax.swing.JFrame {
         return false;
     }
 
+    //chooses a random word for the player to guess
+    // will return null if there are no more new words to guess
     public String getRanWord(){
         int cnt = 0;
         while(cnt < 10) {
@@ -739,6 +754,7 @@ public class englishFrame extends javax.swing.JFrame {
         return null;
     }
 
+    //This method prints out the guess in all caps
     public String printWord(String guess){
         String gues = "";
         for(int i = 0; i < guess.length(); i ++){
@@ -748,6 +764,7 @@ public class englishFrame extends javax.swing.JFrame {
         return gues;
     }
 
+    //Checks to see if the player has guessed the word
     public boolean getWin(String guessNum){
         if(guessNum.equalsIgnoreCase(ranWord)){
             hasWon = true;
@@ -756,6 +773,7 @@ public class englishFrame extends javax.swing.JFrame {
         return false;
     }
 
+    // Prints the status if each letter in the player's guessed word
     public void changeColors(String guess){
         String theGuess = guess.toLowerCase();
         String hidWord = ranWord.toLowerCase();
@@ -1088,6 +1106,7 @@ public class englishFrame extends javax.swing.JFrame {
         }
     }
 
+    // Checks to see if the word guessed is a valid 5 letter word
     public static boolean getIsValid(String guess){
         for(String j: validWords){
             if(guess.equalsIgnoreCase(j)){
@@ -1097,6 +1116,7 @@ public class englishFrame extends javax.swing.JFrame {
         return false;
     }
 
+    // Prints the clicked letter into the textbox
     private void jLabelMouseClicked(java.awt.event.MouseEvent evt, String letter) {
         // TODO add your handling code here:
         typeGuess += letter;
