@@ -1,10 +1,10 @@
 package wordsle;
 
+//This class is used to run the program itself
 public class Wordsle {
 
-
+    //This main method calls the mainScreen class to start the program
     public static void main(String[] args) {
-        System.out.print(Math.random());
         mainScreen o = new mainScreen();
         o.setVisible(true);
     }
