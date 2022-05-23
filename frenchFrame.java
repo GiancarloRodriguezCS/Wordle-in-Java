@@ -8,6 +8,7 @@ import java.awt.event.WindowEvent;
 public class frenchFrame extends javax.swing.JFrame {
 
 
+    //Constructor used to call method that creates JFrame
     public frenchFrame() {
         initComponents();
     }
@@ -28,6 +29,7 @@ public class frenchFrame extends javax.swing.JFrame {
     private static boolean hasWon = false;
     private static int wordsLeft = 9;
 
+    //This method displays the assets for the JFrame
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
@@ -479,6 +481,7 @@ public class frenchFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>
 
+    //Controls what happens when guess button is pressed displaying if the player guessed correctly or not
     private void guessBActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         ImageIcon emoji = new ImageIcon(getClass().getResource("IMG_9708.png"));
@@ -584,6 +587,7 @@ public class frenchFrame extends javax.swing.JFrame {
         typeGuess = "";
     }
 
+    //This changes the word that the player has to guess
     private void newBActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         guesLeft = 6;
@@ -634,6 +638,7 @@ public class frenchFrame extends javax.swing.JFrame {
         }
     }
 
+    //This brings the player back to the language selection screen
     private void langBActionPerformed(java.awt.event.ActionEvent evt){
         guesLeft = 6;
         wordsLeft--;
@@ -645,6 +650,7 @@ public class frenchFrame extends javax.swing.JFrame {
         o.setVisible(true);
     }
 
+    //Main method used to run this class directly
     public static void main(String args[]) {
 
 
@@ -656,11 +662,13 @@ public class frenchFrame extends javax.swing.JFrame {
         });
     }
 
+    //Close method used to close the JFrame
     public void close(){
         WindowEvent winClosingEvent = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
     }
 
+    //Checks to see if the player still has words left in order to play
     public static boolean getATrue(){
         for(int i = 0; i < verList.length; i++){
             if(verList[i]){
@@ -670,6 +678,7 @@ public class frenchFrame extends javax.swing.JFrame {
         return false;
     }
 
+    //Chooses a new word for the player to guess
     public String getRanWord(){
         int cnt = 0;
         while(cnt < 10) {
@@ -739,6 +748,7 @@ public class frenchFrame extends javax.swing.JFrame {
         return gues;
     }
 
+    //Checks to see if the player has guessed the word
     public boolean getWin(String guessNum){
         if(guessNum.equalsIgnoreCase(ranWord)){
             hasWon = true;
@@ -747,6 +757,7 @@ public class frenchFrame extends javax.swing.JFrame {
         return false;
     }
 
+    //changes the color of the letters in the guessed word
     public void changeColors(String guess){
         String theGuess = guess.toLowerCase();
         String hidWord = ranWord.toLowerCase();
@@ -1053,6 +1064,7 @@ public class frenchFrame extends javax.swing.JFrame {
         }
     }
 
+    //Puts the selected letter into the textbox
     private void jLabelMouseClicked(java.awt.event.MouseEvent evt, String letter) {
         // TODO add your handling code here:
         typeGuess += letter;
