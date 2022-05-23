@@ -4,10 +4,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowEvent;
 
-
+//This class displays the spanish verion of wordle fit with spanish words
 public class spanishFrame extends javax.swing.JFrame {
 
 
+    //Calls a method to display the JFrame
     public spanishFrame() {
         initComponents();
     }
@@ -28,6 +29,7 @@ public class spanishFrame extends javax.swing.JFrame {
     private static boolean canGetWord = true;
     private static boolean hasWon = false;
 
+    //Displays the assets for the JFrame
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
@@ -479,6 +481,7 @@ public class spanishFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>
 
+    //Handles what occurs when the guess button is pressed
     private void guessBActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         ImageIcon emoji = new ImageIcon(getClass().getResource("IMG_9708.png"));
@@ -585,6 +588,7 @@ public class spanishFrame extends javax.swing.JFrame {
         typeGuess = "";
     }
 
+    //Switches the word to guess
     private void newBActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         guesLeft = 6;
@@ -635,6 +639,7 @@ public class spanishFrame extends javax.swing.JFrame {
         }
     }
 
+    //Bings player to language selection screen
     private void langBActionPerformed(java.awt.event.ActionEvent evt){
         guesLeft = 6;
         wordsLeft--;
@@ -646,6 +651,7 @@ public class spanishFrame extends javax.swing.JFrame {
         o.setVisible(true);
     }
 
+    //used to run this class directly
     public static void main(String args[]) {
 
 
@@ -657,11 +663,13 @@ public class spanishFrame extends javax.swing.JFrame {
         });
     }
 
+    //Used to close the JFrame
     public void close(){
         WindowEvent winClosingEvent = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
     }
 
+    //Checks to see if there are words left for the player to guess
     public static boolean getATrue(){
         for(int i = 0; i < verList.length; i++){
             if(verList[i]){
@@ -671,6 +679,7 @@ public class spanishFrame extends javax.swing.JFrame {
         return false;
     }
 
+    //Chooses a word for the player to guess
     public String getRanWord(){
         int cnt = 0;
         while(cnt < 10) {
@@ -731,6 +740,7 @@ public class spanishFrame extends javax.swing.JFrame {
         return null;
     }
 
+    //Displays the guessed word
     public String printWord(String guess){
         String gues = "";
         for(int i = 0; i < guess.length(); i ++){
@@ -740,6 +750,7 @@ public class spanishFrame extends javax.swing.JFrame {
         return gues;
     }
 
+    //Checks to see if the player guessed correctly
     public boolean getWin(String guessNum){
         if(guessNum.equalsIgnoreCase(ranWord)){
             hasWon = true;
@@ -748,6 +759,7 @@ public class spanishFrame extends javax.swing.JFrame {
         return false;
     }
 
+    //Changes the letters in the guessed word accordingly
     public void changeColors(String guess){
         String theGuess = guess.toLowerCase();
         String hidWord = ranWord.toLowerCase();
@@ -1054,6 +1066,7 @@ public class spanishFrame extends javax.swing.JFrame {
         }
     }
 
+    //Adds the selected letter to the textbox
     private void jLabelMouseClicked(java.awt.event.MouseEvent evt, String letter) {
         // TODO add your handling code here:
         typeGuess += letter;
