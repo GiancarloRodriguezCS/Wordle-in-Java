@@ -5,17 +5,22 @@ package wordsle;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+
+//This class displays the language selection screen with three buttons for a french, spanish, and english version of wordle 
+//The class also displays the wins and losses for the player
 public class mainScreen extends javax.swing.JFrame {
 
     private static int cnt = 1;
     private static int wins = 0;
     private static int losses = 0;
 
+    //Constructor calls a method to design the JFrame
     public mainScreen() {
         initComponents();
     }
 
 
+    //This method creates all of the assets for the JFrame
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
@@ -118,6 +123,7 @@ public class mainScreen extends javax.swing.JFrame {
         pack();
     }// </editor-fold>
 
+    //This method is used to switch to the french version of wordle when pressed
     private void frenchBActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         if(frenchFrame.getATrue()) {
@@ -140,6 +146,7 @@ public class mainScreen extends javax.swing.JFrame {
         }
     }
 
+    //This method is used to switch to the spanish version of wordle when pressed
     private void spanishBActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         if(spanishFrame.getATrue()) {
@@ -162,6 +169,7 @@ public class mainScreen extends javax.swing.JFrame {
         }
     }
 
+    //This method is used to switch to the english version of wordle when pressed
     private void englishBActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         if(englishFrame.getATrue()) {
@@ -184,6 +192,7 @@ public class mainScreen extends javax.swing.JFrame {
         }
     }
 
+    //main method used to run the program directly from this class
     /**
      * @param args the command line arguments
      */
@@ -198,11 +207,13 @@ public class mainScreen extends javax.swing.JFrame {
         });
     }
 
+    //This method closes the JFrame when needed
     public void close(){
         WindowEvent winClosingEvent = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
     }
 
+    //Increments used for the win-lose ratio that is diplayed
     public static void incrementWins(){wins++;}
     public static void incrementLosses(){losses++;}
 
